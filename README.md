@@ -78,7 +78,7 @@ src/
 
 ---
 
-[Depoloyed Link]()
+[Depoloyed Link](https://pixel-task-checklist.netlify.app/)
 ---
 
 ## ✍️ Author
