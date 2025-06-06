@@ -21,7 +21,7 @@ export function TaskForm({ onAddTasks }) {
 
     return (
         <form className="form" onSubmit={handleSubmit}>
-            <h3>✅What tasks do you need to complete today?</h3>
+            <h3>What tasks do you need to complete today?</h3>
             <input type="text"
                 placeholder="Add a task"
                 value={description}

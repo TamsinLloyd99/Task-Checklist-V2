@@ -44,6 +44,7 @@ export default function App() {
     const confirmed = window.confirm("Are you sure you want to delete all tasks?")
     if (confirmed) {
       setTasks([]);
+      setIsStarted(false);
     }
   }
 
@@ -56,20 +57,24 @@ export default function App() {
   }
 
   return (
-    <div className="app">
-      <Logo />
-      {!isStarted ? (
-        <Button onClick={handleStart}>Start</Button>
-      ) : (
-        <>
-          <TaskForm onAddTasks={handleAddTasks}//generates new items so needs to access the function 
-          />
-          <Checklist tasks={tasks} onDeleteTasks={handleDeleteTasks} onToggleTask={handleToggleTask} onClearList={onClearList}//generates the tasks so needs to access the state 
-          />
-          <Footer tasks={tasks} />
-        </>
-      )}
-      {/* conditionally rendered different components based on start button */}
+    <div className="page">
+      <div className="app">
+        <Logo />
+        {!isStarted ? (
+          <Button onClick={handleStart}>Start</Button>
+        ) : (
+          <>
+            <TaskForm onAddTasks={handleAddTasks} />
+            <Checklist
+              tasks={tasks}
+              onDeleteTasks={handleDeleteTasks}
+              onToggleTask={handleToggleTask}
+              onClearList={onClearList}
+            />
+          </>
+        )}
+      </div>
+      {isStarted && <Footer tasks={tasks} />}
     </div>
-  )
+  );
 }

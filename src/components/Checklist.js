@@ -11,6 +11,7 @@ export function Checklist({ tasks, onDeleteTasks, onToggleTask, onClearList }) {
     if (sortBy === "completed") sortedTasks = tasks.slice().sort((a, b) => Number(a.completed) - Number(b.completed));
 
     console.log(sortBy);
+    if (tasks.length === 0) return null;
 
 
     return (
@@ -25,14 +26,16 @@ export function Checklist({ tasks, onDeleteTasks, onToggleTask, onClearList }) {
                 {/* map through items array from state */}
             </ul>
 
-            <div className="sort">
-                <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="input">Sort by the input order</option>
-                    <option value="description">Sort by the description</option>
-                    <option value="completed">Sort by the completed status</option>
-                </select>
-                <Button onClick={() => { onClearList(); }}>Clear List</Button>
-            </div>
+            {tasks.length > 0 && (
+                <div className="sort">
+                    <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                        <option value="input">Sort by the input order</option>
+                        <option value="description">Sort by the description</option>
+                        <option value="completed">Sort by the completed status</option>
+                    </select>
+                    <Button onClick={() => { onClearList(); }}>Clear List</Button>
+                </div>
+            )}
         </div>
     );
 }
